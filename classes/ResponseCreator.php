@@ -41,11 +41,11 @@
       {
         if($type == 'array')
         {
-            return self::$response;
+            return $response;
         }
         else if($type == 'json')
         {
-            return json_encode(self::$response);
+            return json_encode($response);
         }
         else
         {
