@@ -50,7 +50,7 @@
         else
         {
             self::error('master','Improper response type mentioned! - '.__METHOD__);
-            return self::$response;
+            return self::$response['master'];
         }
       }
      /**
