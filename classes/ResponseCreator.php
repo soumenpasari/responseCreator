@@ -30,7 +30,7 @@
          }
          else
          {
-             return self::$response;
+             return self::$response['master'];
          }
      }
      /**
