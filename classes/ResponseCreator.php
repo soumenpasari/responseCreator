@@ -20,19 +20,39 @@
      /**
       * get response variable according to the register key if defined
       * @param string $registerKey - register key for response array
+      * @param string $type - type of response array ie array or json
       * @return array $response
       */
-     public static function getResponse($registerKey = null)
+     public static function getResponse($registerKey = null,$type = 'array')
      {
          if($registerKey != null)
          {
-             return self::$response[$registerKey];
+             return self::getResponseByType(self::$response[$registerKey],$type);
          }
          else
          {
-             return self::$response['master'];
+            return self::getResponseByType(self::$response['master'],$type);
          }
      }
+     /**
+      * return response according to the type
+      */
+      public static function getResponseByType($response,$type)
+      {
+        if($type == 'array')
+        {
+            return self::$response;
+        }
+        else if($type == 'json')
+        {
+            return json_encode(self::$response);
+        }
+        else
+        {
+            self::error('master','Improper response type mentioned! - '.__METHOD__);
+            return self::$response;
+        }
+      }
      /**
       * get response to assign in your own array var
       * @return array
