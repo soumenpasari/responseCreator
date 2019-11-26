@@ -97,10 +97,7 @@
         }
         catch(Exception $e)
         {
-            self::$response['master']['status'] = false;
-            self::$response['master']['message'] = $e->getMessage();
-            self::$response['master']['httpResponseCode'] = $e->getCode();
-            http_response_code($e->getCode());
+            self::error('master',$e->getMessage(),$e->getCode());
         }
         return null;
       }
@@ -135,10 +132,7 @@
         }
         catch(Exception $e)
         {
-            self::$response['master']['status'] = false;
-            self::$response['master']['message'] = $e->getMessage();
-            self::$response['master']['httpResponseCode'] = $e->getCode();
-            http_response_code($e->getCode());
+            self::error('master',$e->getMessage(),$e->getCode());
         }
         return null;
       }
@@ -182,10 +176,7 @@
           }
           catch(Exception $e)
           {
-            self::$response['master']['status'] = false;
-            self::$response['master']['message'] = $e->getMessage();
-            self::$response['master']['httpResponseCode'] = $e->getCode();
-            http_response_code($e->getCode());
+            self::error('master',$e->getMessage(),$e->getCode());
           }
           return null;
       }
