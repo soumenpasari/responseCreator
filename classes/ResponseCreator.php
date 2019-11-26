@@ -23,15 +23,40 @@
       * @param string $type - type of response array ie array or json
       * @return array $response
       */
-     public static function getResponse($registerKey = null,$type = 'array')
+     public static function getResponse($type = 'array',$registerKey = null)
      {
-         if($registerKey != null)
+         try
          {
-             return self::getResponseByType(self::$response[$registerKey],$type);
+            if($registerKey != null)
+            {
+                if(array_key_exists($registerKey,self::$response))
+                {
+                    return self::getResponseByType(self::$response[$registerKey],$type);
+                }
+                else
+                {
+                    throw new Exception('Registry key / branch response does not exist!',400);
+                }
+            }
+            else
+            {
+                // check if only master is available or not then return accordingly
+                if(count(self::$response) > 1)
+                {
+                    // return the whole response array
+                    return self::getResponseByType(self::$response,$type);
+                }
+                else
+                {
+                    // return the master key of response array
+                    return self::getResponseByType(self::$response['master'],$type);
+                }
+            }
          }
-         else
+         catch(Exception $e)
          {
-            return self::getResponseByType(self::$response['master'],$type);
+             self::error('master',$e->getMessage(),$e->getCode());
+             return self::$response['master'];
          }
      }
      /**
