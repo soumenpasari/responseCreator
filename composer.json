@@ -13,5 +13,8 @@
     "autoload": {
         "psr-4": {"soumenpasari\\responseCreator\\": "src/"}
     },
-    "require": {}
+    "require": {},
+    "require-dev": {
+        "phpunit/phpunit": "^8.5"
+    }
 }
