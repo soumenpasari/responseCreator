@@ -1,0 +1,4 @@
+index.php
+/vendor/
+#phpunit.xml
+.phpunit*

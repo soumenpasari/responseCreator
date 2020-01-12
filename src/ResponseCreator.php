@@ -1,8 +1,9 @@
 <?php
 /**
  * @author soumen pasari
- * @package static-response-creator
+ * @package response-creator
  */
+namespace soumenpasari\responseCreator;
 
  class ResponseCreator
  {
